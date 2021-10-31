@@ -1,0 +1,13 @@
+schema: '2.0'
+stages:
+  train:
+    cmd: python train.py
+    deps:
+    - path: data/
+      md5: d0cda4b5ad470a338c34219f4855d807.dir
+      size: 63569557
+      nfiles: 11
+    outs:
+    - path: model.joblib
+      md5: 4ab5e3526b3a68cb3319565508ce016f
+      size: 3156
