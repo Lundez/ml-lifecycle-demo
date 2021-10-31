@@ -78,5 +78,7 @@ venv.bak/
 # Custom
 /model.joblib
 /confusion_matrix.png
-/data/test/*
-/data/train/*
+/data/test/**.json
+/data/test/**.arrow
+/data/train/**.json
+/data/train/**.arrow
