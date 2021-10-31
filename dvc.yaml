@@ -3,5 +3,10 @@ stages:
     cmd: python train.py
     deps:
     - data/
+    metrics:
+    - scores.json:
+        cache: false
+    plots:
+      - confusion_matrix.png
     outs:
     - model.joblib
