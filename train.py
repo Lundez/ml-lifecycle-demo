@@ -2,7 +2,6 @@
 import joblib
 import yaml
 import json
-from joblib import dump
 
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, ConfusionMatrixDisplay
@@ -10,8 +9,6 @@ from sklearn.metrics import accuracy_score, ConfusionMatrixDisplay
 from datasets import load_from_disk
 
 import matplotlib.pyplot as plt
-import pandas as pd
-
 
 # %%
 def get_params() -> str:
