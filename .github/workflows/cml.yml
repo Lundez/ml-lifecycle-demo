@@ -4,7 +4,6 @@ jobs:
   run:
      runs-on: ubuntu-latest
      container: docker://ghcr.io/iterative/cml:0-dvc2-base1
-
      steps:
         - uses: actions/checkout@v2
         - name: Train model
@@ -15,6 +14,8 @@ jobs:
             pip install -r requirements.txt
             dvc pull --run-cache      # Pull data & run-cache from S3
             dvc repro --force         # Reproduce pipeline
-            cat metrics.txt >> report.md
+            echo "## Metrics" >> report.md
+            dvc metrics diff --show-md >> report.md
+            echo "### Confusion Matrix" >> report.md
             cml publish confusion_matrix.png --md >> report.md
             cml send-comment report.md
