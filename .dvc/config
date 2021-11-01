@@ -1,4 +1,4 @@
 [core]
     remote = azure
 ['remote "azure"']
-    url = https://afryml.blob.core.windows.net/lifecycle
+    url = azure://lifecycle
