@@ -10,7 +10,7 @@ jobs:
           env:
             REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           run: |
-            conda install --file requirements.txt
+            pip install -r requirements.txt
             python train.py
             cat metrics.txt >> report.md
             cml publish confusion_matrix.png --md >> report.md

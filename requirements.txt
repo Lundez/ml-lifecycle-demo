@@ -1,11 +1,11 @@
 # This file may be used to create an environment using:
 # $ conda create --name <env> --file <this file>
 # platform: osx-arm64
-datasets=1.14.0=pypi_0
-joblib=1.1.0=pyhd8ed1ab_0
-matplotlib=3.4.3=py39hdf13c20_1
-numpy=1.21.3=pypi_0
-pandas=1.3.4=pypi_0
-pyyaml=6.0=pypi_0
-scikit-learn=1.0.1=py39h12ba089_1
-scipy=1.7.1=py39h5060c3b_0
+datasets==1.14.0
+joblib==1.1.0
+matplotlib==3.4.3
+numpy==1.21.3
+pandas==1.3.4
+pyyaml==6.0
+scikit-learn==1.0.1
+scipy==1.7.1
