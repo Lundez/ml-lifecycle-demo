@@ -13,7 +13,7 @@ jobs:
           run: |
             pip install -r requirements.txt
             dvc pull --run-cache      # Pull data & run-cache from S3
-            dvc repro --force         # Reproduce pipeline
+            dvc repro                 # Reproduce pipeline
             echo "## Metrics" >> report.md
             dvc metrics diff --show-md >> report.md
             echo "### Confusion Matrix" >> report.md
