@@ -12,10 +12,10 @@ jobs:
             AZURE_STORAGE_CONNECTION_STRING: ${{ secrets.AZURE_CONNECTION_STRING }}
           run: |
             pip install -r requirements.txt
-            dvc pull --run-cache      # Pull data & run-cache from S3
+            dvc pull --run-cache      # Pull data & run-cache from blob-storage
             dvc repro                 # Reproduce pipeline
             echo "## Metrics" >> report.md
-            dvc metrics diff --show-md >> report.md
+            dvc metrics diff main --show-md >> report.md
             echo "### Confusion Matrix" >> report.md
             cml publish confusion_matrix.png --md >> report.md
             cml send-comment report.md
