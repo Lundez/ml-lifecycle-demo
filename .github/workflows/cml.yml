@@ -10,7 +10,7 @@ jobs:
         - name: Train model
           env:
             REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            AZURE_AUTH: ${{ secrets.AZURE_CONNECTION_STRING }}
+            AZURE_STORAGE_CONNECTION_STRING: ${{ secrets.AZURE_CONNECTION_STRING }}
           run: |
             pip install -r requirements.txt
             dvc pull --run-cache        # Pull data & run-cache from S3
