@@ -3,3 +3,4 @@
 ['remote "azure"']
     url = azure://lifecycle
     allow_anonymous_login = true
+    connection_string = ${{ secrets.AZURE_CONNECTION_STRING }}
