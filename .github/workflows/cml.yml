@@ -18,6 +18,6 @@ jobs:
             dvc metrics show --show-md >> report.md
             echo "### Confusion Matrix" >> report.md
             echo "### Diff w/ main"
-            dvc metrics diff main --show-md >> report.md
+            dvc metrics diff origin/main --show-md >> report.md
             cml publish confusion_matrix.png --md >> report.md
             cml send-comment report.md
