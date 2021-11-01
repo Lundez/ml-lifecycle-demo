@@ -1,0 +1,24 @@
+name: CML
+on: [push]
+jobs:
+  run:
+     runs-on: ubuntu-latest
+     container: docker://ghcr.io/iterative/cml:0-dvc2-base1
+     steps:
+        - uses: actions/checkout@v2
+        - name: Train model
+          env:
+            REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            AZURE_STORAGE_CONNECTION_STRING: ${{ secrets.AZURE_CONNECTION_STRING }}
+          run: |
+            git fetch origin main
+            pip install -r requirements.txt
+            dvc pull --run-cache      # Pull data & run-cache from blob-storage
+            dvc repro                 # Reproduce pipeline
+            echo "## Metrics" >> report.md
+            dvc metrics show --show-md >> report.md
+            echo "### Confusion Matrix" >> report.md
+            cml publish confusion_matrix.png --md >> report.md
+            echo "### Diff w/ main" >> report.md
+            dvc metrics diff main --show-md >> report.md
+            cml send-comment report.md
