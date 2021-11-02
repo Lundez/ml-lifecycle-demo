@@ -4,16 +4,16 @@ stages:
     cmd: python train.py
     deps:
     - path: data/
-      md5: cc40d3ef72e66bc4d64c0c630c516399.dir
-      size: 63569556
-      nfiles: 11
+      md5: 2b4e6fdc5ca4e6e9e625dc8444442a52.dir
+      size: 1257579175
+      nfiles: 15
     outs:
     - path: confusion_matrix.png
-      md5: 141f8fc23be3ebb8153d286a3cfea6ce
-      size: 65717
-    - path: model.joblib
-      md5: ca9f5919b9ab52269c2f12891b59ac83
-      size: 63640
+      md5: 261f0329afe3088918b1a8cc65c125f6
+      size: 31839
+    - path: model.pth
+      md5: db8c2a0ba318bf1639a0a37da51902f8
+      size: 140641998
     - path: scores.json
-      md5: 76f1855637bda5ca85536d491c6f0164
-      size: 24
+      md5: 036d839baebb147047994315f95f8051
+      size: 36

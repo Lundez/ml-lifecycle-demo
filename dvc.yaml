@@ -9,4 +9,4 @@ stages:
     plots:
       - confusion_matrix.png
     outs:
-    - model.joblib
+    - model.pth
