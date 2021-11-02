@@ -6,6 +6,9 @@ import json
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, ConfusionMatrixDisplay
 
+from fastai.vision.all import *
+from dvclive.fastai import DvcLiveCallback
+
 from datasets import load_from_disk
 
 import matplotlib.pyplot as plt
@@ -15,22 +18,23 @@ def get_params() -> str:
     with open("params.yml") as f:
         return yaml.safe_load(f)
 
+def reshape_data(example):
+    example['image'] = np.array(example['image']).reshape(28*28)
+    return example
+
 # %%
 dataset = load_from_disk("data/")
 params = get_params()
 
 
 # %%
-train = dataset['train'].to_pandas()
-test = dataset['test'].to_pandas()
-
-train['flat_img'] = train['image']
-test['flat_img'] = test['image']
+train = dataset['train'].map(reshape_data)
+test = dataset['test'].map(reshape_data)
 
 clf = LogisticRegression(random_state=42)
-clf.fit(train['flat_img'].to_numpy().reshape(60000, 28*28), train['label'])
+clf.fit(train['image'], train['label'])
 
-y_pred = clf.predict(test['flat_img'].to_numpy().reshape(10000, 28*28))
+y_pred = clf.predict(test['image'])
 
 accuracy = accuracy_score(test['label'], y_pred)
 disp = ConfusionMatrixDisplay.from_predictions(test['label'], y_pred, normalize='true', cmap=plt.cm.Blues)
@@ -42,5 +46,3 @@ with open('scores.json', 'w') as f:
 
 plt.savefig('confusion_matrix.png')
 joblib.dump(clf, 'model.joblib')
-
-# VGG16, LinearRegression, Vanilla CNN
