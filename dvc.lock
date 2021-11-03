@@ -9,11 +9,11 @@ stages:
       nfiles: 11
     outs:
     - path: confusion_matrix.png
-      md5: 141f8fc23be3ebb8153d286a3cfea6ce
-      size: 65717
-    - path: model.joblib
-      md5: ca9f5919b9ab52269c2f12891b59ac83
-      size: 63640
+      md5: a2092015f3c66a24a0fd8b15a4c91fb6
+      size: 28745
+    - path: model.pth
+      md5: 2582aff90c67e075dbb0527e961fb1af
+      size: 117181064
     - path: scores.json
-      md5: 76f1855637bda5ca85536d491c6f0164
-      size: 24
+      md5: 3795b6c209849bd9dd80906df28dfb0d
+      size: 36
