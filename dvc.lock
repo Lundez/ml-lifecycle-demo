@@ -4,9 +4,9 @@ stages:
     cmd: python train.py
     deps:
     - path: data/
-      md5: 2b4e6fdc5ca4e6e9e625dc8444442a52.dir
-      size: 1257579175
-      nfiles: 15
+      md5: cc40d3ef72e66bc4d64c0c630c516399.dir
+      size: 63569556
+      nfiles: 11
     outs:
     - path: confusion_matrix.png
       md5: 141f8fc23be3ebb8153d286a3cfea6ce
