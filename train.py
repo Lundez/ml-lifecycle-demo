@@ -3,16 +3,13 @@ import joblib
 import yaml
 import json
 
+import matplotlib.pyplot as plt
+import numpy as np
+
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, ConfusionMatrixDisplay
 
-from fastai.vision.all import *
-from dvclive.fastai import DvcLiveCallback
-
 from datasets import load_from_disk
-
-import matplotlib.pyplot as plt
-
 # %%
 def get_params() -> str:
     with open("params.yml") as f:
