@@ -13,3 +13,8 @@ jobs:
           run: |
             git fetch origin main
             pip install -r requirements.txt
+            echo "## Confusion Matrix" >> report.md
+            cml publish confusion_matrix.png --md >> report.md
+            echo "## Metric Diff" >> report.md
+            dvc metrics diff main >> report.md
+            cml send-comment report.md

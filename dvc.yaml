@@ -1,0 +1,14 @@
+stages:
+  train:
+    cmd: python train.py
+    deps:
+    - data/
+    - train.py
+    params:
+    - penalty
+    outs:
+    - confusion_matrix.png
+    - model.pkl
+    metrics:
+    - scores.json:
+        cache: false

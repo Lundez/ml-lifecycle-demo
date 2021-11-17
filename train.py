@@ -5,7 +5,7 @@ import json
 
 import matplotlib.pyplot as plt
 import numpy as np
-
+import pickle
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, ConfusionMatrixDisplay
 
@@ -15,31 +15,36 @@ class TODO(Exception):
      pass
 # %%
 def get_params() -> str:
-    with open("params.yml") as f:
-        raise TODO("Use yaml to load file")
+    with open("params.yaml") as f:
+        return yaml.safe_load(f)
 
 def reshape_data(example):
-    raise TODO("example['image'] should be 28*28")
+    example['image'] = np.array(example['image']).reshape(28*28)
+    return example
 
 # %%
 dataset = load_from_disk("data/")
 params = get_params()
 
-
 # %%
-raise TODO("define train & test, then map the data into correct fmt")
+train = dataset['train'].map(reshape_data)
+test = dataset['test'].map(reshape_data)
 
-raise TODO("Create a LogisticRegression and fit on data")
-require(type(clf) == LogisticRegression)
+clf = LogisticRegression(penalty = params['penalty'])
+clf.fit(train['image'], train['label'])
 
-raise TODO("Predict with model and get accuracy + confusion matrix")
+y_pred = clf.predict(test['image'])
+accuracy = accuracy_score(y_pred, test['label'])
+
+disp = ConfusionMatrixDisplay.from_predictions(test['label'], y_pred, normalize='true', cmap=plt.cm.Blues)
 
 print(f"Accuracy: {accuracy}")
 
 with open('scores.json', 'w') as f:
-    raise TODO("Dump score as avg_accuracy in json")
+    json.dump({'avg_accuracy': accuracy}, f)
 
-raise TODO("Dump clf & confusionmatrix")
+pickle.dump(clf, open('model.pkl', 'wb'))
+plt.savefig('confusion_matrix.png')
 
 # %%
 
