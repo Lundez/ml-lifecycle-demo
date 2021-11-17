@@ -23,3 +23,14 @@ stages:
     - path: scores.json
       md5: 3ac91e3c02e73c305422fcca9ceefa86
       size: 24
+  download_data:
+    cmd: python download_data.py
+    deps:
+    - path: download_data.py
+      md5: 665fd88219a55b56867b5c619174ee95
+      size: 200
+    outs:
+    - path: data
+      md5: bec190904185d1ad3e93c0c9ccfa58d8.dir
+      size: 63569258
+      nfiles: 7

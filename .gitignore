@@ -83,3 +83,4 @@ venv.bak/
 /data/train/**.json
 /data/train/**.arrow
 /model.pkl
+/data
