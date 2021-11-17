@@ -1,6 +1,6 @@
 stages:
   download_data:
-    cmd: python download_data.py
+    cmd: dvc pull
     deps:
     - download_data.py
     outs:
@@ -13,8 +13,9 @@ stages:
     params:
     - penalty
     outs:
-    - confusion_matrix.png
     - model.pkl
+    plots:
+      - confusion_matrix.png
     metrics:
     - scores.json:
         cache: false

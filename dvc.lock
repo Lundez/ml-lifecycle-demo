@@ -4,9 +4,9 @@ stages:
     cmd: python train.py
     deps:
     - path: data/
-      md5: 447a6f8b20c11696b127950791c6a9d1.dir
-      size: 63569289
-      nfiles: 9
+      md5: bec190904185d1ad3e93c0c9ccfa58d8.dir
+      size: 63569258
+      nfiles: 7
     - path: train.py
       md5: 7e42de440f004ecd430f9bfcdbe149d6
       size: 2164
