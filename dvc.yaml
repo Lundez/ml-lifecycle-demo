@@ -1,12 +1,21 @@
 stages:
+  download_data:
+    cmd: dvc pull
+    deps:
+    - download_data.py
+    outs:
+    - data
   train:
     cmd: python train.py
     deps:
     - data/
+    - train.py
+    params:
+    - penalty
+    outs:
+    - model.pkl
+    plots:
+      - confusion_matrix.png
     metrics:
     - scores.json:
         cache: false
-    plots:
-      - confusion_matrix.png
-    outs:
-    - model.joblib

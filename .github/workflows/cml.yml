@@ -13,12 +13,8 @@ jobs:
           run: |
             git fetch origin main
             pip install -r requirements.txt
-            dvc pull --run-cache      # Pull data & run-cache from blob-storage
-            dvc repro                 # Reproduce pipeline
-            echo "## Metrics" >> report.md
-            dvc metrics show --show-md >> report.md
-            echo "### Confusion Matrix" >> report.md
+            echo "## Confusion Matrix" >> report.md
             cml publish confusion_matrix.png --md >> report.md
-            echo "### Diff w/ main" >> report.md
-            dvc metrics diff main --show-md >> report.md
+            echo "## Metric Diff" >> report.md
+            dvc metrics diff main >> report.md
             cml send-comment report.md

@@ -82,3 +82,5 @@ venv.bak/
 /data/test/**.arrow
 /data/train/**.json
 /data/train/**.arrow
+/model.pkl
+/data
